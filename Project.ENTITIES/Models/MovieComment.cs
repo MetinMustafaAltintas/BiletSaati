@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project.ENTITIES.Models
 {
-    public class MovieComment
+    public class MovieComment:BaseEntity
     {
         public int MovieID { get; set; }
         public int CommentID { get; set; }

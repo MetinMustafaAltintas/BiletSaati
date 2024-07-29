@@ -1,0 +1,13 @@
+Aþagýda Hangi Katmanlarda Package kullanýldýðý yazýyor.
+
+Project.ENTITIES  
+
+Microsoft.AspNetCore.Identity.EntityFrameworkCore  
+
+Project.CONF 
+
+Microsoft.EntityFrameworkCore.SqlServer 
+
+Project.DAL :
+Microsoft.EntityFrameworkCore.Proxies (LazyLoading...)
+Microsoft.EntityFrameworkCore.Tools (Migration ve Package Manager Console'da terminal kodlarýn anlaþýlmasý için...)
