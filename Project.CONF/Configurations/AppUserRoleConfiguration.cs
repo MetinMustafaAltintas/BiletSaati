@@ -14,11 +14,11 @@ namespace Project.CONF.Configurations
         {
             base.Configure(builder);
             builder.Ignore(x => x.ID);
-            builder.HasKey(x => new
-            {
-                x.UserId,
-                x.RoleId
-            });
+                builder.HasKey(x => new
+                {
+                    x.UserId,
+                    x.RoleId
+                });
         }
     }
 }
