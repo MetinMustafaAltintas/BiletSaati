@@ -1,13 +1,16 @@
 Aþagýda Hangi Katmanlarda Package kullanýldýðý yazýyor.
 
-Project.ENTITIES  
+Project.ENTITIES : 
 
 Microsoft.AspNetCore.Identity.EntityFrameworkCore  
 
-Project.CONF 
+Project.CONF :
 
 Microsoft.EntityFrameworkCore.SqlServer 
 
 Project.DAL :
 Microsoft.EntityFrameworkCore.Proxies (LazyLoading...)
 Microsoft.EntityFrameworkCore.Tools (Migration ve Package Manager Console'da terminal kodlarýn anlaþýlmasý için...)
+
+Project.BLL :
+FluentValidation.AspNetcore (CustomIdentityService class'ý için)
