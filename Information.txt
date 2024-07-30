@@ -14,3 +14,6 @@ Microsoft.EntityFrameworkCore.Tools (Migration ve Package Manager Console'da ter
 
 Project.BLL :
 FluentValidation.AspNetcore (CustomIdentityService class'ý için)
+
+*Project.CoreMVC (UI) : 
+Microsoft.EntityFrameworkCore.Design (.Net Core MVC'den baðýmsýz bir katmanda Core Identity yapýsý kullanýlacaksa bu kütüphane indirilmek zorundadýr.)
