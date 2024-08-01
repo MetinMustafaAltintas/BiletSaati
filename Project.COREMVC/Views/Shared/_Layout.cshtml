@@ -1,49 +1,251 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Project.COREMVC</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Project.COREMVC.styles.css" asp-append-version="true" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KesifDunyasi">
+    <meta name="author" content="BiletSaati">
+    <meta name="keyword" content="BiletSaati ,BiletSaati">
+    <link rel="shortcut icon" href="">
+
+    <title>BiletSaati</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/OuterTools/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/OuterTools/css/bootstrap-reset.css" rel="stylesheet">
+    <!--external css-->
+    <link href="~/OuterTools/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/OuterTools/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
+    <link rel="stylesheet" href="~/OuterTools/css/owl.carousel.css" type="text/css">
+    <!-- Custom styles for this template -->
+    <link href="~/OuterTools/css/style.css" rel="stylesheet">
+    <link href="~/OuterTools/css/style-responsive.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Project.COREMVC</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+    <section id="container">
+        <!--header start-->
+        <header class="header white-bg">
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="sidebar-toggle-box">
+                    <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
+                </div>
+            }
+            <!--logo start-->
+            <a class="logo" asp-action="Index" asp-controller="Home" asp-area="">Bilet<span>Saati</span></a>
+            <a class="logo" style="margin-left:20px;" asp-action="Index" asp-controller="Home" asp-area=""><i class="icon-home">AnaSayfa</i></a>
+            <!--logo end-->
+            <div class="top-nav ">
+                <!--search & user info start-->
+                <ul class="nav pull-right top-menu">
+                    <li>
+                        <a asp-controller="Shopping" asp-action="CartPage"><i class="icon-shopping-cart"></i> Sepet</a>
+                    </li>
+                    <!-- user login dropdown start-->
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="dropdown ">
+                            <a data-toggle="dropdown" class="dropdown-toggle">
+                                <!--  <img alt="" src="img/avatar1_small.jpg"> -->
+                                <span class="icon-user"></span>
+                                <span class="username"> @User.Identity.Name</span>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu extended">
+                                <div class="log-arrow-up"></div>
+                                <li><a asp-action="index" asp-controller="Profile" asp-area="" asp-route-name="@User.Identity.Name"><i class="icon-user"></i> Profil</a></li>
+                                <li><a asp-action="index" asp-controller="Order" asp-area="" asp-route-name="@User.Identity.Name"><i class="icon-shopping-cart"></i> Siparişlerim</a></li>
+                                <li><a asp-action="Signout" asp-controller="Home" asp-area=""><i class="icon-key"></i> Çıkış Yap</a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    }
+                    else
+                    {
+                        <li>
+                            <a asp-action="Signin" asp-controller="Home">Giriş Yap</a>
+                        </li>
+                    }
+                    <!-- user login dropdown end -->
+                </ul>
+                <!--search & user info end-->
+            </div>
+        </header>
+        <!--header end-->
+        <!--sidebar start-->
+        @if (User.IsInRole("Admin"))
+        {
+            <aside>
+                <div id="sidebar" class="nav-collapse ">
+                    <!-- sidebar menu start-->
+                    <ul class="sidebar-menu" id="nav-accordion">
+                        <li>
+                            <a asp-action="index" asp-area="Admin" asp-controller="Home"> <i class="icon-home"></i> AnaSayfa</a>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="icon-user"></i>
+                                <span>Kullanıcılar menüsü</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a asp-action="index" asp-area="Admin" asp-controller="User">Kullanıcılar Listesi</a></li>
+                                <li><a asp-action="Create" asp-area="Admin" asp-controller="User">Kullanıcı Ekle</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="icon-user"></i>
+                                <span>Roller Menüsü</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a asp-action="index" asp-area="Admin" asp-controller="Role">Roller Listesi</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="icon-book"></i>
+                                <span>Kategoriler Menüsü</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a asp-action="index" asp-area="Admin" asp-controller="Category">Kategoriler Listesi</a></li>
+                                <li><a asp-action="CreateCategory" asp-area="Admin" asp-controller="Category">Kategori Ekle</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="icon-cogs"></i>
+                                <span>Ürünler Menüsü</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a asp-action="index" asp-area="Admin" asp-controller="Product">Ürünler Listesi</a></li>
+                                <li><a asp-action="CreateProduct" asp-area="Admin" asp-controller="Product">Ürün Ekle</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="icon-truck"></i>
+                                <span>Gönderici Menüsü</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a asp-action="index" asp-area="Admin" asp-controller="Shipper">Gönderici Listesi</a></li>
+                                <li><a asp-action="CreateShipper" asp-area="Admin" asp-controller="Shipper">Gönderici Ekle</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="icon-shopping-cart"></i>
+                                <span>Sipariş Menüsü</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a asp-action="index" asp-area="Admin" asp-controller="Order">Sipariş Listesi</a></li>
+                            </ul>
                         </li>
                     </ul>
+                    <!-- sidebar menu end-->
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+            </aside>
+        }
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - Project.COREMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+        <!--sidebar end-->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+                @RenderBody()
+            </section>
+        </section>
+        <!--main content end-->
+        <!--footer start-->
+        <footer class="site-footer">
+            <div class="text-center">
+                Bilet Saati
+                <a href="#" class="go-top">
+                    <i class="icon-angle-up"></i>
+                </a>
+            </div>
+        </footer>
+        <!--footer end-->
+    </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="~/OuterTools/js/jquery.js"></script>
+    <script src="~/OuterTools/js/jquery-1.8.3.min.js"></script>
+    <script src="~/OuterTools/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="~/OuterTools/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="~/OuterTools/js/jquery.scrollTo.min.js"></script>
+    <script src="~/OuterTools/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="~/OuterTools/js/jquery.sparkline.js" type="text/javascript"></script>
+    <script src="~/OuterTools/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+    <script src="~/OuterTools/js/owl.carousel.js"></script>
+    <script src="~/OuterTools/js/jquery.customSelect.min.js"></script>
+    <script src="~/OuterTools/js/respond.min.js"></script>
+
+    <script class="include" type="text/javascript" src="~/OuterTools/js/jquery.dcjqaccordion.2.7.js"></script>
+
+    <!--common script for all pages-->
+    <script src="~/OuterTools/js/common-scripts.js"></script>
+
+    <!--script for this page-->
+    <script src="~/OuterTools/js/sparkline-chart.js"></script>
+    <script src="~/OuterTools/js/easy-pie-chart.js"></script>
+    <script src="~/OuterTools/js/count.js"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            $('#example').dataTable({
+                "aaSorting": [[4, "desc"]]
+            });
+        });
+
+        $(document).ready(function () {
+            // attributesTable için DataTable özelliklerini uygula
+            $('#attributesTable').DataTable();
+
+            // valuesTable için DataTable özelliklerini uygula
+            $('#valuesTable').DataTable();
+        });
+        //owl carousel
+
+        $(document).ready(function () {
+            $("#owl-demo").owlCarousel({
+                navigation: true,
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true,
+                autoPlay: true
+
+            });
+        });
+
+        //custom select box
+
+        $(function () {
+            $('select.styled').customSelect();
+        });
+
+        $(document).ready(function () {
+            // Belirli bir süre sonra uyarı kutularını kapat
+            window.setTimeout(function () {
+                $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                    $(this).remove();
+                });
+            }, 5000); // 5 saniye beklet
+
+        });
+    </script>
+
+
+
+
 </body>
 </html>
