@@ -1,0 +1,79 @@
+﻿@model UserSignInPageVm
+
+
+
+<br />
+<br />
+<br />
+@if (TempData["Message"] != null)
+{
+    <h1 class="alert alert-danger">
+        <b>@TempData["Message"]!</b>
+    </h1>
+}
+
+<form asp-action="SignIn" asp-controller="Home" method="post" class="form-signin">
+    <input type="hidden" asp-for="UserSignInRequestModel.ReturnUrl" />
+    <h2 class="form-signin-heading">Giriş Yap</h2>
+    <div class="login-wrap">
+
+        <span class="text-danger" asp-validation-for="UserSignInRequestModel.UserName"></span>
+        <input asp-for="UserSignInRequestModel.UserName" type="text" class="form-control" placeholder="Kullanıcı Adı">
+
+        <span class="text-danger" asp-validation-for="UserSignInRequestModel.Password"></span>
+        <input asp-for="UserSignInRequestModel.Password" type="password" class="form-control" placeholder="Şifre">
+
+        <input type="checkbox" asp-for="UserSignInRequestModel.RememberMe" class="form-check-input" />
+        <label class="form-check-label">
+            Beni Hatırla?  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="pull-right">
+                <a data-toggle="modal" href="#myModal">
+                    Parolanızı mı unuttunuz?
+                </a>
+
+            </span>
+        </label>
+        <button class="btn btn-lg btn-login btn-block" type="submit">Giriş Yap</button>
+        <div class="registration">
+            Henüz bir hesabınız yok mu?
+            <a class="" asp-action="Register">
+                Bir hesap oluşturun
+            </a>
+        </div>
+
+    </div>
+    <div class="text-danger" asp-validation-summary="ModelOnly">
+    </div>
+
+
+
+
+</form>
+<form asp-action="IforgotPassword" asp-controller="Home" method="post">
+    <!-- Modal -->
+    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Şifremi Unuttum</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Şifrenizi sıfırlamak için e-posta adresinizi girin.</p>
+
+
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                    <input asp-for="Email" type="email" class="form-control" placeholder="E-mail">
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">İptal</button>
+                    <button class="btn btn-success" type="submit">Gönder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal -->
+    <div class="text-danger" asp-validation-summary="ModelOnly">
+    </div>
+</form>
