@@ -1,8 +1,209 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Dropdown Menus</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+        .container {
+            display: flex;
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #f5f5f5;
+        }
+
+        .item {
+            position: relative;
+            display: inline-block;
+            width: 25%;
+            margin-right: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+            .item:last-child {
+                margin-right: 0;
+            }
+
+        .title {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .selection {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            width: 100%;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #f1f1f1;
+                }
+
+        .item:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="item">
+            <div class="title">Şehir</div>
+            <div class="selection">
+                Şehir Seçiniz <span style="font-size: 12px;">&#8595;</span>
+                <div class="dropdown-content">
+                    <a href="#">Ankara</a>
+                    <a href="#">İstanbul</a>
+                    <a href="#">İzmir</a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="title">Mekan</div>
+            <div class="selection">
+                Mekan Seçiniz <span style="font-size: 12px;">&#8595;</span>
+                <div class="dropdown-content">
+                    <a >Konya</a>
+                    <a href="#">Sivas</a>
+                    <a href="#">Antalya</a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="title">Tür</div>
+            <div class="selection">
+                Tür Seçiniz <span style="font-size: 12px;">&#8595;</span>
+                <div class="dropdown-content">
+                    <a href="#">Tiyatro</a>
+                    <a href="#">Müzik</a>
+                    <a href="#">Sinema</a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="title">Etkinlik Tarihi</div>
+            <div class="selection">
+                Etkinlik Tarihi Seçiniz <span style="font-size: 12px;">&#8595;</span>
+                <div class="dropdown-content">
+                    <a href="#">2023-12-25</a>
+                    <a href="#">2024-01-01</a>
+                    <a href="#">2024-02-14</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <div class="row product-list">
+        <div class="col-md-1"></div>
+
+        <div class="col-md-2">
+            <section class="panel">
+                <div class="pro-img-box">
+                    <img src="~/OuterTools/img/product-list/pro-1.jpg" alt="" />
+                </div>
+
+                <div class="panel-body text-center">
+                    <h4>
+                        <a href="#" class="pro-title">
+                            Leopard Shirt Dress
+                        </a>
+                    </h4>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-2">
+            <section class="panel">
+                <div class="pro-img-box">
+                    <img src="~/OuterTools/img/product-list/pro-1.jpg" alt="" />
+                </div>
+
+                <div class="panel-body text-center">
+                    <h4>
+                        <a href="#" class="pro-title">
+                            Leopard Shirt Dress
+                        </a>
+                    </h4>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-2">
+            <section class="panel">
+                <div class="pro-img-box">
+                    <img src="~/OuterTools/img/product-list/pro-1.jpg" alt="" />
+                </div>
+
+                <div class="panel-body text-center">
+                    <h4>
+                        <a href="#" class="pro-title">
+                            Leopard Shirt Dress
+                        </a>
+                    </h4>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-2">
+            <section class="panel">
+                <div class="pro-img-box">
+                    <img src="~/OuterTools/img/product-list/pro-1.jpg" alt="" />
+                </div>
+
+                <div class="panel-body text-center">
+                    <h4>
+                        <a href="#" class="pro-title">
+                            Leopard Shirt Dress
+                        </a>
+                    </h4>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-2">
+            <section class="panel">
+                <div class="pro-img-box">
+                    <img src="~/OuterTools/img/product-list/pro-1.jpg" alt="" />
+                </div>
+
+                <div class="panel-body text-center">
+                    <h4>
+                        <a href="#" class="pro-title">
+                            Leopard Shirt Dress
+                        </a>
+                    </h4>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+    <br />
+
+</body>
+</html>

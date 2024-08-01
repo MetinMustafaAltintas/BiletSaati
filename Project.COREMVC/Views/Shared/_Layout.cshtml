@@ -43,14 +43,12 @@
             }
             <!--logo start-->
             <a class="logo" asp-action="Index" asp-controller="Home" asp-area="">Bilet<span>Saati</span></a>
-            <a class="logo" style="margin-left:20px;" asp-action="Index" asp-controller="Home" asp-area=""><i class="icon-home">AnaSayfa</i></a>
+            
             <!--logo end-->
             <div class="top-nav ">
                 <!--search & user info start-->
                 <ul class="nav pull-right top-menu">
-                    <li>
-                        <a asp-controller="Shopping" asp-action="CartPage"><i class="icon-shopping-cart"></i> Sepet</a>
-                    </li>
+                    
                     <!-- user login dropdown start-->
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -159,11 +157,9 @@
 
         <!--sidebar end-->
         <!--main content start-->
-        <section id="main-content">
             <section class="wrapper">
                 @RenderBody()
             </section>
-        </section>
         <!--main content end-->
         <!--footer start-->
         <footer class="site-footer">
