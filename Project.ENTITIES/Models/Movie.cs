@@ -14,6 +14,8 @@ namespace Project.ENTITIES.Models
         public string ImagePath1 { get; set; }
         public string ImagePath2 { get; set; }
         public string Description { get; set; }
+        public DateTime StartingDate { get; set; }
+        public DateTime EndDate { get; set; }
 
         //Relational Properties
 

@@ -24,8 +24,8 @@ namespace Project.BLL.Managers.Abstracts
         //Modify Commands
         void Add(T item);
         Task AddAsync(T item);
-        void Delete(T item);
-        Task DeleteAsync(T item);
+        string Delete(T item);
+        Task<string> DeleteAsync(T item);
         void Update(T item);
         Task UpdateAsync(T item);
         string Destroy(T item);

@@ -1,0 +1,24 @@
+﻿@model UpdateRolePageVM
+
+@if (TempData["Message"] != null)
+{
+    <h1 class="alert alert-danger">
+        <b>@TempData["Message"]!</b>
+    </h1>
+}
+<form asp-action="UpdateRole" asp-controller="Role" method="post" class="p-3 w-75 m-auto">
+
+    <input type="hidden" asp-for="UpdateRolePureVM.ID" />
+    <div class="mb-3">
+        <label>Role İsmini giriniz</label>
+        <input asp-for="UpdateRolePureVM.RoleName" class="form-control" />
+        <span asp-validation-for="UpdateRolePureVM.RoleName" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="mb-3">
+        <button class="btn btn-primary">Role Güncelle</button>
+    </div>
+
+    <div class="text-danger" asp-validation-summary="ModelOnly">
+    </div>
+</form>

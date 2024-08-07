@@ -9,12 +9,13 @@
 
         .container {
             display: flex;
-            width: 80%;
+            width:60%;
             margin: 0 auto;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             background-color: #f5f5f5;
+            margin-top:100px;
         }
 
         .item {
@@ -71,28 +72,20 @@
     </style>
 </head>
 <body>
-    <div class="btn-group">
-        <button class="btn btn-white" type="button">Default</button>
-        <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button"><span class="caret"></span></button>
-        <ul role="menu" class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-        </ul>
-    </div>
+    
 
     <div class="container">
-        <div class="item">
+        <div class="item" >
             <div class="title">Şehir</div>
-            <div class="selection">
-                Şehir Seçiniz <span style="font-size: 12px;">&#8595;</span>
-                <div class="dropdown-content">
-                    <a href="#">Ankara</a>
-                    <a href="#">İstanbul</a>
-                    <a href="#">İzmir</a>
-                </div>
+            <div class="btn-group">
+                <button class="btn btn-white" type="button" style="width:245px"></button>
+                <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button"><span class="caret"></span></button>
+                <ul role="menu" class="dropdown-menu">
+                   
+                    
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                </ul>
             </div>
         </div>
         <div class="item">

@@ -1,0 +1,51 @@
+﻿@model UserPageVM
+@if (TempData["Message"] != null)
+{
+    <h1 class="alert alert-danger">
+        <b>@TempData["Message"]!</b>
+    </h1>
+}
+<!-- page start-->
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Kullanıcılar Tablosu
+            </header>
+            <div class="panel-body">
+                <div class="adv-table">
+                    <table class="display table table-bordered table-striped" id="example">
+                        <thead>
+                            <tr>
+                                <th>Kullanıcı İsmi</th>
+                                <th>Email Adresi</th>
+                                <th>Rolleri</th>
+                                <th>Rol Ata</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (UserPureVM item in Model.UserPureVMs)
+                            {
+                                <tr style="font-weight:bold">
+                                    <td>@item.UserName</td>
+                                    <td>@item.Email</td>
+                                    <td> <getUserInfo user-id="item.ID"></getUserInfo></td>
+                                    <td><a asp-action="AssignRole" asp-route-id="@item.ID" class="btn btn-info "><i class="icon-refresh"></i> Rol Ata</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Kullanıcı İsmi</th>
+                                <th>Email Adresi</th>
+                                <th>Rolleri</th>
+                                <th>Rol Ata</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+

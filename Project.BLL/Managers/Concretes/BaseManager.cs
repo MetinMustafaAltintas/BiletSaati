@@ -39,14 +39,44 @@ namespace Project.BLL.Managers.Concretes
             return await _iRep.AnyAsync(exp);
         }
 
-        public void Delete(T item)
+        public string Delete(T item)
         {
-            _iRep.Delete(item);
+            try
+            {
+                item.Status= ENTITIES.Enums.DataStatus.Deleted;
+                _iRep.Delete(item); // Veritabanından silme işlemi yapılır
+            }
+
+            catch (Exception ex)
+            {
+                // Veritabanı hata mesajını yakalayarak özelleştirilmiş hata mesajı döndürülür
+
+                if (ex.InnerException is SqlException sqlEx && sqlEx.Number == 547)
+                {
+                    return "Veri pasife alınamıyor çünki bu veriyi kullanan başka veri var. Lütfen veriyi Kullanan yerleri silin";
+                }
+            }
+            return $"Veriyi silemezsiniz cünkü {item.ID} id'sine sahip veri pasif degil";
         }
 
-        public async Task DeleteAsync(T item)
+        public async Task<string> DeleteAsync(T item)
         {
-             await _iRep.DeleteAsync(item);
+            try
+            {
+                item.Status = ENTITIES.Enums.DataStatus.Deleted;
+                await _iRep.DeleteAsync(item); // Veritabanından silme işlemi yapılır
+            }
+
+            catch (Exception ex)
+            {
+                // Veritabanı hata mesajını yakalayarak özelleştirilmiş hata mesajı döndürülür
+
+                if (ex.InnerException is SqlException sqlEx && sqlEx.Number == 547)
+                {
+                    return "Veri pasife alınamıyor çünki bu veriyi kullanan başka veri var. Lütfen veriyi Kullanan yerleri silin";
+                }
+            }
+            return $"Veriyi silemezsiniz cünkü {item.ID} id'sine sahip veri pasif degil";
         }
 
         public string Destroy(T item)
@@ -65,7 +95,7 @@ namespace Project.BLL.Managers.Concretes
 
                     if (ex.InnerException is SqlException sqlEx && sqlEx.Number == 547)
                     {
-                        return "Veriler silinemiyor. Lütfen kategorideki ürünleri silin";
+                        return "Veriler silinemiyor. Lütfen veriyi Kullanan yerleri silin";
                     }
                 }
 

@@ -5,24 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="KesifDunyasi">
     <meta name="author" content="BiletSaati">
-    <meta name="keyword" content="BiletSaati ,BiletSaati">
-    <link rel="shortcut icon" href="">
+    <meta name="keyword" content="BiletSaati">
+    <link rel="shortcut icon" href="img/KesifDunyasi.png">
 
-    <title>BiletSaati</title>
+    <title>Bilet Saati</title>
+
 
     <!-- Bootstrap core CSS -->
     <link href="~/OuterTools/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/OuterTools/css/bootstrap-reset.css" rel="stylesheet">
     <!--external css-->
     <link href="~/OuterTools/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="~/OuterTools/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
-    <link rel="stylesheet" href="~/OuterTools/css/owl.carousel.css" type="text/css">
+    <link href="~/OuterTools/assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
+    <link href="~/OuterTools/assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
     <!-- Custom styles for this template -->
     <link href="~/OuterTools/css/style.css" rel="stylesheet">
     <link href="~/OuterTools/css/style-responsive.css" rel="stylesheet" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
@@ -32,17 +34,39 @@
 </head>
 
 <body>
-    <section id="container">
+
+    <section id="container" class="">
         <!--header start-->
         <header class="header white-bg">
             <!--logo start-->
             <a class="logo" asp-action="Index" asp-controller="Home" asp-area="">Bilet<span>Saati</span></a>
-            
+
             <!--logo end-->
+            <div class="horizontal-menu navbar-collapse collapse ">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a asp-action="index" asp-area="Admin" asp-controller="Home"> <i class="icon-home"></i> AnaSayfa</a>
+                    </li>
+                    <li><a asp-action="index" asp-area="Admin" asp-controller="User">Kullanıcılar Listesi</a></li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" >Extra <b class=" icon-angle-down"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="blank.html">Blank Page</a></li>
+                            <li><a href="boxed_page.html">Boxed Page</a></li>
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="invoice.html">Invoice</a></li>
+                            <li><a href="search_result.html">Search Result</a></li>
+                            <li><a href="404.html">404 Error Page</a></li>
+                            <li><a href="500.html">500 Error Page</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
             <div class="top-nav ">
                 <!--search & user info start-->
                 <ul class="nav pull-right top-menu">
-                    
+
                     <!-- user login dropdown start-->
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -74,8 +98,7 @@
         </header>
         <!--header end-->
         <!--sidebar start-->
-        
-
+       
         <!--sidebar end-->
         <!--main content start-->
             <section class="wrapper">
@@ -85,7 +108,7 @@
         <!--footer start-->
         <footer class="site-footer">
             <div class="text-center">
-                Bilet Saati
+                Keşif Dünyası
                 <a href="#" class="go-top">
                     <i class="icon-angle-up"></i>
                 </a>
@@ -95,27 +118,21 @@
     </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="~/OuterTools/js/jquery.js"></script>
-    <script src="~/OuterTools/js/jquery-1.8.3.min.js"></script>
+    <!--<script src="js/jquery.js"></script>-->
+    <script type="text/javascript" language="javascript" src="~/OuterTools/assets/advanced-datatable/media/js/jquery.js"></script>
     <script src="~/OuterTools/js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="~/OuterTools/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script type="text/javascript" src="~/OuterTools/js/hover-dropdown.js"></script>
     <script src="~/OuterTools/js/jquery.scrollTo.min.js"></script>
     <script src="~/OuterTools/js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script src="~/OuterTools/js/jquery.sparkline.js" type="text/javascript"></script>
-    <script src="~/OuterTools/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
-    <script src="~/OuterTools/js/owl.carousel.js"></script>
-    <script src="~/OuterTools/js/jquery.customSelect.min.js"></script>
+    <script type="text/javascript" language="javascript" src="~/OuterTools/assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
     <script src="~/OuterTools/js/respond.min.js"></script>
 
-    <script class="include" type="text/javascript" src="~/OuterTools/js/jquery.dcjqaccordion.2.7.js"></script>
 
     <!--common script for all pages-->
     <script src="~/OuterTools/js/common-scripts.js"></script>
 
-    <!--script for this page-->
-    <script src="~/OuterTools/js/sparkline-chart.js"></script>
-    <script src="~/OuterTools/js/easy-pie-chart.js"></script>
-    <script src="~/OuterTools/js/count.js"></script>
+    <!--script for this page only-->
 
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function () {
@@ -124,6 +141,7 @@
             });
         });
 
+
         $(document).ready(function () {
             // attributesTable için DataTable özelliklerini uygula
             $('#attributesTable').DataTable();
@@ -131,7 +149,6 @@
             // valuesTable için DataTable özelliklerini uygula
             $('#valuesTable').DataTable();
         });
-        //owl carousel
 
         $(document).ready(function () {
             $("#owl-demo").owlCarousel({
@@ -160,9 +177,5 @@
 
         });
     </script>
-
-
-
-
 </body>
 </html>

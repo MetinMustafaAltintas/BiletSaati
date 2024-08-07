@@ -81,8 +81,7 @@ namespace Project.COREMVC.Controllers
 
                     if (roles.Contains("Admin"))
                     {
-                        //                   Action ismi  Controller ismi  Route Value'sü
-                        return RedirectToAction("Index", "Home"/*, new { Area = "Admin" }*/);
+                        return RedirectToAction("Index", "User", new { Area = "Admin" });
                     }
                     else
                     {

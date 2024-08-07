@@ -18,4 +18,8 @@
     <ProjectReference Include="..\Project.COMMON\Project.COMMON.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+  </ItemGroup>
+
 </Project>
