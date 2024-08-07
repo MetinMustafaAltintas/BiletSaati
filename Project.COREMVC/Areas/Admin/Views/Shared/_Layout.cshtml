@@ -47,17 +47,13 @@
                     <li>
                         <a asp-action="index" asp-area="Admin" asp-controller="Home"> <i class="icon-home"></i> AnaSayfa</a>
                     </li>
-                    <li><a asp-action="index" asp-area="Admin" asp-controller="User">Kullanıcılar Listesi</a></li>
+                    <li><a asp-action="index" asp-area="Admin" asp-controller="User">Kullanıcı Listesi</a></li>
+                    <li><a asp-action="index" asp-area="Admin" asp-controller="Role">Role Listesi</a></li>
                     <li class="dropdown">
-                        <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" >Extra <b class=" icon-angle-down"></b></a>
+                        <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" >Kategori Menüsü<b class=" icon-angle-down"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="blank.html">Blank Page</a></li>
-                            <li><a href="boxed_page.html">Boxed Page</a></li>
-                            <li><a href="profile.html">Profile</a></li>
-                            <li><a href="invoice.html">Invoice</a></li>
-                            <li><a href="search_result.html">Search Result</a></li>
-                            <li><a href="404.html">404 Error Page</a></li>
-                            <li><a href="500.html">500 Error Page</a></li>
+                            <li><a asp-action="index" asp-area="Admin" asp-controller="Category">Kategori Listesi</a></li>
+                            <li><a asp-action="CreateCategory" asp-area="Admin" asp-controller="Category">Kategori Ekle</a></li>
                         </ul>
                     </li>
                 </ul>

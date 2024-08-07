@@ -45,6 +45,7 @@ namespace Project.BLL.Managers.Concretes
             {
                 item.Status= ENTITIES.Enums.DataStatus.Deleted;
                 _iRep.Delete(item); // Veritabanından silme işlemi yapılır
+                return "Veri Başarıyla Pasife alındı";
             }
 
             catch (Exception ex)
@@ -65,6 +66,7 @@ namespace Project.BLL.Managers.Concretes
             {
                 item.Status = ENTITIES.Enums.DataStatus.Deleted;
                 await _iRep.DeleteAsync(item); // Veritabanından silme işlemi yapılır
+                return "Veri Başarıyla Pasife alındı";
             }
 
             catch (Exception ex)
