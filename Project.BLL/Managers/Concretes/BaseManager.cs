@@ -154,6 +154,7 @@ namespace Project.BLL.Managers.Concretes
             return await _iRep.GetActivesAsync();
         }
 
+
         public List<T> GetAll()
         {
             return _iRep.GetAll();

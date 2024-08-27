@@ -1,0 +1,62 @@
+﻿@model CreateMoviePageVM
+
+<form asp-action="CreateMovie" asp-controller="Movie" method="post" class="col-md-6" style="margin-left:25%" enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <label>Film İsmini giriniz</label>
+        <input asp-for="CreateMoviePureVM.MovieName" class="form-control" />
+        <span asp-validation-for="CreateMoviePureVM.MovieName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Film süresini giriniz</label>
+        <input asp-for="CreateMoviePureVM.Time" class="form-control" />
+        <span asp-validation-for="CreateMoviePureVM.Time" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Film'in Vizyon tarihini giriniz</label>
+        <input asp-for="CreateMoviePureVM.VisionDate" type="date" class="form-control" />
+        <span asp-validation-for="CreateMoviePureVM.VisionDate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Film'in Açıklamasını Yazınız</label>
+        <input asp-for="CreateMoviePureVM.Description"  class="form-control" />
+        <span asp-validation-for="CreateMoviePureVM.Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Film'in Başlama tarihini giriniz</label>
+        <input asp-for="CreateMoviePureVM.StartingDate" type="date" class="form-control" />
+        <span asp-validation-for="CreateMoviePureVM.StartingDate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Film'in Bitiş tarihini giriniz</label>
+        <input asp-for="CreateMoviePureVM.EndDate" type="date" class="form-control" />
+        <span asp-validation-for="CreateMoviePureVM.EndDate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>1.Fotoğrafı yükleyiniz</label>
+        <input type="file" name="formFile1" class="form-control" asp-for="CreateMoviePureVM.ImagePath1" />
+    </div>
+    
+        <div class="mb-3">
+            <label>2.Fotoğrafı yükleyiniz</label>
+            <input type="file" name="formFile2" class="form-control" asp-for="CreateMoviePureVM.ImagePath2" />
+        </div>
+    
+
+    
+
+    <br />
+    <div class="mb-3">
+        <button class="btn btn-primary">Film Ekle</button>
+    </div>
+
+    <div class="text-danger" asp-validation-summary="ModelOnly">
+    </div>
+
+</form>

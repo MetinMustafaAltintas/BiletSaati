@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@model CategoryCityPlacePageVM
+
+<form asp-action="Index" asp-controller="Home" method="post">
+<!DOCTYPE html>
 <html>
 <head>
     <title>Dropdown Menus</title>
@@ -71,56 +74,64 @@
         }
     </style>
 </head>
-<body>
-    
-
+<body> 
+    @{
+        
+    }
     <div class="container">
         <div class="item" >
             <div class="title">Şehir</div>
             <div class="btn-group">
-                <button class="btn btn-white" type="button" style="width:245px"></button>
+                  <select>
+                        @foreach (GetCityPureVM item in Model.GetCityPureVM)
+                            {
+                            <option value="@item.CityName">@item.CityName</option>
+                        }
+                  </select>
+
+                
+            </div>
+        </div>
+        <div class="item">
+            <div class="title">Mekan</div>
+            <div class="btn-group">
+                <button class="btn btn-white" type="button" style="width:245px">Şehir Seçiniz</button>
                 <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button"><span class="caret"></span></button>
                 <ul role="menu" class="dropdown-menu">
-                   
-                    
+
+
                     <li><a href="#">Another action</a></li>
                     <li><a href="#">Something else here</a></li>
                 </ul>
             </div>
         </div>
         <div class="item">
-            <div class="title">Mekan</div>
-            <div class="selection">
-                Mekan Seçiniz <span style="font-size: 12px;">&#8595;</span>
-                <div class="dropdown-content">
-                    <a >Konya</a>
-                    <a href="#">Sivas</a>
-                    <a href="#">Antalya</a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
             <div class="title">Tür</div>
-            <div class="selection">
-                Tür Seçiniz <span style="font-size: 12px;">&#8595;</span>
-                <div class="dropdown-content">
-                    <a href="#">Tiyatro</a>
-                    <a href="#">Müzik</a>
-                    <a href="#">Sinema</a>
-                </div>
+            <div class="btn-group">
+                <button class="btn btn-white" type="button" style="width:245px"></button>
+                <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button"><span class="caret"></span></button>
+                <ul role="menu" class="dropdown-menu">
+
+
+                    <li<a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                </ul>
             </div>
         </div>
         <div class="item">
             <div class="title">Etkinlik Tarihi</div>
-            <div class="selection">
-                Etkinlik Tarihi Seçiniz <span style="font-size: 12px;">&#8595;</span>
-                <div class="dropdown-content">
-                    <a href="#">2023-12-25</a>
-                    <a href="#">2024-01-01</a>
-                    <a href="#">2024-02-14</a>
-                </div>
+            <div class="btn-group">
+                <button class="btn btn-white" type="button" style="width:245px"></button>
+                <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button"><span class="caret"></span></button>
+                <ul role="menu" class="dropdown-menu">
+
+
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                </ul>
             </div>
         </div>
+        <button class="btn btn-primary" type="submit">ARA</button>
     </div>
 
     <br />
@@ -212,3 +223,4 @@
    
 </body>
 </html>
+</form>

@@ -1,12 +1,18 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Project.BLL.Managers.Abstracts;
 using Project.COMMON.Tools;
+using Project.COREMVC.Areas.Admin.Models.User.PageVMs;
+using Project.COREMVC.Areas.Admin.Models.User.PureVMs;
 using Project.COREMVC.Models;
 using Project.COREMVC.Models.AppUser.PageVM;
 using Project.COREMVC.Models.AppUser.PureVM;
+using Project.COREMVC.Models.Home.PageVM;
+using Project.COREMVC.Models.Home.PureVM;
 using Project.ENTITIES.Models;
+using System.Collections.Generic;
 using System.Diagnostics;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
@@ -20,14 +26,18 @@ namespace Project.COREMVC.Controllers
         readonly RoleManager<AppRole> _roleManager;
         readonly SignInManager<AppUser> _signInManager;
         readonly IAppUserProfileManager _appUserProfileManager;
+        readonly ICategoryManager _categoryManager;
+        readonly ICityManager _cityManager;
 
-        public HomeController(ILogger<HomeController> logger, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager, IAppUserProfileManager appUserProfileManager)
+        public HomeController(ILogger<HomeController> logger, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager, IAppUserProfileManager appUserProfileManager, ICategoryManager categoryManager, ICityManager cityManager)
         {
             _logger = logger;
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _appUserProfileManager = appUserProfileManager;
+            _categoryManager = categoryManager;
+            _cityManager = cityManager;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -35,12 +45,29 @@ namespace Project.COREMVC.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            List<City> cities = await _cityManager.GetAllAsync();
 
-        public IActionResult Index()
+            List<GetCityPureVM> cityPureVMs = cities.Select(cityPureVM => new GetCityPureVM
+            {
+                CityName = cityPureVM.CityName
+
+            }).ToList();
+
+
+            CategoryCityPlacePageVM categoryCityPlacePageVM = new()
+            {
+                GetCityPureVM = cityPureVMs
+            };
+            return View(categoryCityPlacePageVM);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Index(string city)
         {
             return View();
         }
-
 
         public IActionResult SignIn(string returnUrl)
         {

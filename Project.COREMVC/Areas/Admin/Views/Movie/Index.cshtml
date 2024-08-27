@@ -1,0 +1,85 @@
+﻿@model GetMoviePageVM
+
+@if (TempData["Message"] != null)
+{
+    <h1 class="alert alert-danger">
+        <b>@TempData["Message"]!</b>
+    </h1>
+}
+<!-- page start-->
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Filmler Tablosu
+            </header>
+            <div class="panel-body">
+                <div class="adv-table">
+                    <table class="display table table-bordered table-striped" id="example">
+                        <thead>
+                            <tr>
+                                <th>Film ID</th>
+                                <th>Film Ismi</th>
+                                <th>Film Süresi</th>
+                                <th>Vizyon Tarihi</th>
+                                <th>Film Açıklaması</th>
+                                <th>Başlangıç Tarihi</th>
+                                <th>Bitiş Tarihi</th>
+                                <th>1.Fotoğraf</th>
+                                <th>2.Fotoğraf</th>
+                                <th>Kategorileri</th>
+                                <th>Kategori Ekle</th>
+                                <th class="hidden-phone">Durumu</th>
+                                <th class="hidden-phone">Guncelle</th>
+                                <th class="hidden-phone">Pasife Al</th>
+                                <th class="hidden-phone">Sil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (GetMoviePureVM item in Model.GetMoviePureVMs)
+                            {
+                                <tr class="gradeX">
+                                    <td>@item.ID</td>
+                                    <td>@item.MovieName</td>
+                                    <td>@item.Time</td>
+                                    <td>@item.VisionDate.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.StartingDate.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.EndDate.ToString("dd/MM/yyyy")</td>
+                                    <td><img width="30" height="30" src="@item.ImagePath1"/></td>
+                                    <td><img width="30" height="30" src="@item.ImagePath2"/></td>                                    
+                                    <td><getMovieCategory movie-id="item.ID"></getMovieCategory></td>
+                                    <td><a asp-action="AssignCategory" asp-route-id="@item.ID" class="btn btn-info "><i class="icon-refresh"></i> Kategori Ekle</a></td>
+                                    <td>@item.Status</td>
+                                    <td class="center hidden-phone"><a asp-action="UpdateCategory" asp-route-id="@item.ID" class="btn btn-warning">Güncelle</a></td>
+                                    <td class="center hidden-phone"><a asp-action="DeleteCategory" asp-route-id="@item.ID" class="btn btn-info">Pasife Al</a></td>
+                                    <td class="center hidden-phone"><a asp-action="DestroyCategory" asp-route-id="@item.ID" class="btn btn-danger">Sil</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Film ID</th>
+                                <th>Film Ismi</th>
+                                <th>Film Süresi</th>
+                                <th>Vizyon Tarihi</th>
+                                <th>Film Açıklaması</th>
+                                <th>Başlangıç Tarihi</th>
+                                <th>Bitiş Tarihi</th>
+                                <th>1.Fotoğraf</th>
+                                <th>2.Fotoğraf</th>
+                                <th>Kategorileri</th>
+                                <th>Kategori Ekle</th>
+                                <th class="hidden-phone">Durumu</th>
+                                <th class="hidden-phone">Guncelle</th>
+                                <th class="hidden-phone">Pasife Al</th>
+                                <th class="hidden-phone">Sil</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
