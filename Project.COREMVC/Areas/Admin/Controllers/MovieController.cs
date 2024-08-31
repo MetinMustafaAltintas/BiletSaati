@@ -151,5 +151,77 @@ namespace Project.COREMVC.Areas.Admin.Controllers
             TempData["Message"] = $"{movie.MovieName} verisi Eklendi";
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> UpdateMovie(int id)
+        {
+            Movie movie = await _movieManager.FindAsync(id);
+            UpdateMoviePureVM updateMovie = new()
+            {
+                ID = id,
+                MovieName = movie.MovieName,
+                Description = movie.Description,
+                StartingDate = movie.StartingDate,
+                EndDate = movie.EndDate,
+                Time = movie.Time,
+                VisionDate = movie.VisionDate,
+                ImagePath1=movie.ImagePath1,
+                ImagePath2 = movie.ImagePath2,
+            };
+            UpdateMoviePageVM updateMoviePageVM = new();
+            updateMoviePageVM.UpdateMoviePureVM=updateMovie;
+            return View(updateMoviePageVM);  
+        }
+        [HttpPost]
+        public async Task<IActionResult> UpdateMovie(UpdateMoviePageVM model , IFormFile formFile1 , IFormFile formFile2)
+        {
+            Movie movie = await _movieManager.FindAsync(model.UpdateMoviePureVM.ID);
+            if (formFile1 != null)
+            {
+                Guid uniqueName = Guid.NewGuid();
+                string extension = Path.GetExtension(formFile1.FileName); //dosyanın uzantısını ele gecirdik...
+                model.UpdateMoviePureVM.ImagePath1 = $"/images/{uniqueName}{extension}";
+
+                string path = $"{Directory.GetCurrentDirectory()}/wwwroot{model.UpdateMoviePureVM.ImagePath1}";
+                FileStream stream = new(path, FileMode.Create);
+                formFile1.CopyTo(stream);
+            }
+            if (formFile2 != null)
+            {
+                Guid uniqueName2 = Guid.NewGuid();
+                string extension2 = Path.GetExtension(formFile2.FileName); //dosyanın uzantısını ele gecirdik...
+                model.UpdateMoviePureVM.ImagePath2 = $"/images/{uniqueName2}{extension2}";
+
+                string path2 = $"{Directory.GetCurrentDirectory()}/wwwroot{model.UpdateMoviePureVM.ImagePath2}";
+                FileStream stream2 = new(path2, FileMode.Create);
+                formFile2.CopyTo(stream2);
+            }
+            
+
+            movie.MovieName = model.UpdateMoviePureVM.MovieName;
+            movie.Description = model.UpdateMoviePureVM.Description;
+            movie.Time = model.UpdateMoviePureVM.Time;
+            movie.StartingDate = model.UpdateMoviePureVM.StartingDate;
+            movie.EndDate = model.UpdateMoviePureVM.EndDate;
+            movie.VisionDate = model.UpdateMoviePureVM.VisionDate;
+            movie.ImagePath1 = model.UpdateMoviePureVM.ImagePath1;
+            movie.ImagePath2 = model.UpdateMoviePureVM.ImagePath2;
+            await _movieManager.UpdateAsync(movie);
+            TempData["Message"] = $"{movie.MovieName} verisi Güncelledi";
+
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> DeleteMovie(int id)
+        {
+            TempData["Message"] = await _movieManager.DeleteAsync(await _movieManager.FindAsync(id));
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> DestroyMovie(int id)
+        {
+            TempData["Message"] = await _movieManager.DestroyAsync(await _movieManager.FindAsync(id));
+            return RedirectToAction("Index");
+        }
+
     }
 }

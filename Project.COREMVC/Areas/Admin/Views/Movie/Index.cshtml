@@ -51,9 +51,9 @@
                                     <td><getMovieCategory movie-id="item.ID"></getMovieCategory></td>
                                     <td><a asp-action="AssignCategory" asp-route-id="@item.ID" class="btn btn-info "><i class="icon-refresh"></i> Kategori Ekle</a></td>
                                     <td>@item.Status</td>
-                                    <td class="center hidden-phone"><a asp-action="UpdateCategory" asp-route-id="@item.ID" class="btn btn-warning">Güncelle</a></td>
-                                    <td class="center hidden-phone"><a asp-action="DeleteCategory" asp-route-id="@item.ID" class="btn btn-info">Pasife Al</a></td>
-                                    <td class="center hidden-phone"><a asp-action="DestroyCategory" asp-route-id="@item.ID" class="btn btn-danger">Sil</a></td>
+                                    <td class="center hidden-phone"><a asp-action="UpdateMovie" asp-route-id="@item.ID" class="btn btn-warning">Güncelle</a></td>
+                                    <td class="center hidden-phone"><a asp-action="DeleteMovie" asp-route-id="@item.ID" class="btn btn-info">Pasife Al</a></td>
+                                    <td class="center hidden-phone"><a asp-action="DestroyMovie" asp-route-id="@item.ID" class="btn btn-danger">Sil</a></td>
                                 </tr>
                             }
                         </tbody>
