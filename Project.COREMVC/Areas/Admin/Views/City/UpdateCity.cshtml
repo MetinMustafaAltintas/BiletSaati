@@ -1,0 +1,19 @@
+﻿@model UpdateCityAdminPageVM
+
+<form asp-action="UpdateCity" asp-controller="City" method="post" class="col-md-6" style="margin-left:25%">
+
+    <input type="hidden" asp-for="UpdateCityAdminPureVM.ID" />
+    <div class="mb-3">
+        <label>Şehir İsmini giriniz</label>
+        <input asp-for="UpdateCityAdminPureVM.CityName" class="form-control" />
+        <span asp-validation-for="UpdateCityAdminPureVM.CityName" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="mb-3">
+        <button class="btn btn-primary">Güncelle</button>
+    </div>
+
+    <div class="text-danger" asp-validation-summary="ModelOnly">
+    </div>
+
+</form>

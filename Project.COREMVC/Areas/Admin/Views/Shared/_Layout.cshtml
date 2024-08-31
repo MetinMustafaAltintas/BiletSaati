@@ -63,6 +63,13 @@
                             <li><a asp-action="CreateMovie" asp-area="Admin" asp-controller="Movie">Film Ekle</a></li>
                         </ul>
                     </li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle">Şehirler<b class=" icon-angle-down"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-action="index" asp-area="Admin" asp-controller="City">Şehir Listesi</a></li>
+                            <li><a asp-action="CreateCity" asp-area="Admin" asp-controller="City">Şehir Ekle</a></li>
+                        </ul>
+                    </li>
                 </ul>
 
             </div>

@@ -1,0 +1,19 @@
+﻿@model CreateCityAdminPageVM
+
+<form asp-action="CreateCity" asp-controller="City" method="post" class="col-md-6" style="margin-left:25%">
+
+    <div class="mb-3">
+        <label>Şehir İsmini giriniz</label>
+        <input asp-for="CreateCityAdminPureVM.CityName" class="form-control" />
+        <span asp-validation-for="CreateCityAdminPureVM.CityName" class="text-danger"></span>
+    </div>
+
+    <br />
+    <div class="mb-3">
+        <button class="btn btn-primary">Şehir Ekle</button>
+    </div>
+
+    <div class="text-danger" asp-validation-summary="ModelOnly">
+    </div>
+
+</form>
