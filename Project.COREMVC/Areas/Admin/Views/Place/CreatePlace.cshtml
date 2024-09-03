@@ -1,0 +1,24 @@
+﻿@model CreatePlaceAdminPageVM
+
+<form asp-action="CreatePlace" asp-controller="Place" method="post" class="col-md-6" style="margin-left:25%">
+
+    <div class="mb-3">
+        <label>Mekan İsmini giriniz</label>
+        <input asp-for="CreatePlaceAdminPureVM.PlaceName" class="form-control" />
+        <span asp-validation-for="CreatePlaceAdminPureVM.PlaceName" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="mb-3">
+        <label>Şehir Seciniz</label>
+        <select asp-for="CreatePlaceAdminPureVM.CityID" asp-items='new SelectList(Model.PlaceCityAdminPureVMs,"ID","CityName")'>
+        </select>
+    </div>
+    <br />
+    <div class="mb-3">
+        <button class="btn btn-primary">Ekle</button>
+    </div>
+
+    <div class="text-danger" asp-validation-summary="ModelOnly">
+    </div>
+
+</form>
