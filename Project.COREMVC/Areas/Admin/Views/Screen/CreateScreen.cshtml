@@ -1,0 +1,30 @@
+﻿@model CreateScreenAdminPageVM
+
+<form asp-action="CreateScreen" asp-controller="Screen" method="post" class="col-md-6" style="margin-left:25%">
+
+    <div class="mb-3">
+        <label>Salon İsmini giriniz</label>
+        <input asp-for="CreateScreenAdminPureVM.ScreenName" class="form-control" />
+        <span asp-validation-for="CreateScreenAdminPureVM.ScreenName" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="mb-3">
+        <label>Kapasite</label>
+        <input asp-for="CreateScreenAdminPureVM.Capacity" class="form-control" type="number" min="0" max="65535" step="1" />
+        <span asp-validation-for="CreateScreenAdminPureVM.Capacity" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="mb-3">
+        <label>Mekan Seciniz</label>
+        <select asp-for="CreateScreenAdminPureVM.PlaceID" asp-items='new SelectList(Model.ScreenPlaceAdminPureVMs,"ID","PlaceName")'>
+        </select>
+    </div>
+    <br />
+    <div class="mb-3">
+        <button class="btn btn-primary">Ekle</button>
+    </div>
+
+    <div class="text-danger" asp-validation-summary="ModelOnly">
+    </div>
+
+</form>

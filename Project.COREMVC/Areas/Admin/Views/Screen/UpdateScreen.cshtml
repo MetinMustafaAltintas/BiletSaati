@@ -1,0 +1,30 @@
+﻿@model UpdateScreenAdminPageVM
+
+<form asp-action="UpdateScreen" asp-controller="Screen" method="post" class="col-md-6" style="margin-left:25%">
+    <input type="hidden" asp-for="UpdateScreenAdminPureVM.ID" />
+    <div class="mb-3">
+        <label>Salon İsmini giriniz</label>
+        <input asp-for="UpdateScreenAdminPureVM.ScreenName" class="form-control" />
+        <span asp-validation-for="UpdateScreenAdminPureVM.ScreenName" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="mb-3">
+        <label>Kapasite</label>
+        <input asp-for="UpdateScreenAdminPureVM.Capacity" class="form-control" type="number" min="0" max="65535" step="1" />
+        <span asp-validation-for="UpdateScreenAdminPureVM.Capacity" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="mb-3">
+        <label>Mekan Seciniz</label>
+        <select asp-for="UpdateScreenAdminPureVM.PlaceID" asp-items='new SelectList(Model.ScreenPlaceAdminPureVMs,"ID","PlaceName")'>
+        </select>
+    </div>
+    <br />
+    <div class="mb-3">
+        <button class="btn btn-primary">Güncelle</button>
+    </div>
+
+    <div class="text-danger" asp-validation-summary="ModelOnly">
+    </div>
+
+</form>

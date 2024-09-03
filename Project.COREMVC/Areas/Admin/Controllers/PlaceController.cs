@@ -5,6 +5,8 @@ using Project.BLL.Managers.Concretes;
 using Project.COREMVC.Areas.Admin.Models.City.PureVMs;
 using Project.COREMVC.Areas.Admin.Models.Place.PageVMs;
 using Project.COREMVC.Areas.Admin.Models.Place.PureVMs;
+using Project.COREMVC.Areas.Admin.Models.Screen.PageVMs;
+using Project.COREMVC.Areas.Admin.Models.Screen.PureVMs;
 using Project.ENTITIES.Models;
 
 namespace Project.COREMVC.Areas.Admin.Controllers
@@ -16,10 +18,12 @@ namespace Project.COREMVC.Areas.Admin.Controllers
     {
         readonly IPlaceManager _placeManager;
         readonly ICityManager _cityManager;
-        public PlaceController(IPlaceManager placeManager, ICityManager cityManager)
+        readonly IScreenManager _screenManager;
+        public PlaceController(IPlaceManager placeManager, ICityManager cityManager, IScreenManager screenManager)
         {
             _placeManager = placeManager;
             _cityManager = cityManager;
+            _screenManager = screenManager;
         }
 
         public async Task<IActionResult> Index()

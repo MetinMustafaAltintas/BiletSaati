@@ -14,7 +14,7 @@ namespace Project.ENTITIES.Models
 
         // Relational Properties
 
-        public virtual Place Places { get; set; }
+        public virtual Place Place { get; set; }
         public virtual ICollection<SessionScreen> SessionScreens { get; set; }
     }
 }
